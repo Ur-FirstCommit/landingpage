@@ -262,10 +262,10 @@ export const faqItems = [
 ];
 
 export const socialLinks = [
-  { label: 'Twitter / X', href: '#', icon: 'twitter' },
-  { label: 'Discord', href: '#', icon: 'discord' },
-  { label: 'GitHub', href: '#', icon: 'github' },
-  { label: 'Email', href: 'mailto:hello@firstcommit.dev', icon: 'email' },
+  { label: 'Instagram', href: 'https://www.instagram.com/ur.firstcommit', icon: 'twitter' },
+  { label: 'Discord', href: 'https://discord.gg/ySq8pZ85XY', icon: 'discord' },
+  { label: 'GitHub', href: 'https://github.com/Ur-FirstCommit', icon: 'github' },
+  { label: 'Email', href: 'mailto:urfirstcommit@gmail.com', icon: 'email' },
 ];
 
 export const footerDescription =
