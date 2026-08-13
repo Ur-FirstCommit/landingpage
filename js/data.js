@@ -182,33 +182,44 @@ export const sponsors = [
 
 export const timeline = [
   {
-    date: 'TBD — Placeholder',
+    date: 'August 10, 2026',
     title: 'Registration Opens',
     description: 'Sign up and secure your spot. Early registration helps us plan resources.',
+    status: 'completed',
+  },
+
+  {
+    date: 'August 21, 2026',
+    title: 'Submissions Open',
+    description: 'The hackathon officially begins. Start building, learning, and documenting your progress.',
     status: 'upcoming',
   },
+
   {
-    date: 'TBD — Placeholder',
-    title: 'Kickoff & Workshops',
-    description: 'Official start with optional workshops to help you get going.',
-    status: 'upcoming',
-  },
-  {
-    date: 'TBD — Placeholder',
-    title: 'Building Period',
-    description: 'The main hackathon window. Build, learn, iterate, and document your progress.',
-    status: 'upcoming',
-  },
-  {
-    date: 'TBD — Placeholder',
+    date: 'October 1, 2026',
     title: 'Submissions Due',
-    description: 'Submit your project, documentation, and learning journey.',
+    description: 'Submit your completed project, documentation, and learning journey before the deadline.',
     status: 'upcoming',
   },
+
   {
-    date: 'TBD — Placeholder',
-    title: 'Showcase & Awards',
-    description: 'Present your work, celebrate achievements, and announce winners.',
+    date: 'October 3, 2026',
+    title: 'Judging Begins',
+    description: 'Judges review submissions and evaluate projects based on the hackathon criteria.',
+    status: 'upcoming',
+  },
+
+  {
+    date: 'October 18, 2026',
+    title: 'Judging Ends',
+    description: 'The judging period concludes as judges finalize their evaluations.',
+    status: 'upcoming',
+  },
+
+  {
+    date: 'October 20, 2026',
+    title: 'Winners Announced',
+    description: 'Celebrate the community and discover the winning projects.',
     status: 'upcoming',
   },
 ];
