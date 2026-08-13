@@ -8,7 +8,7 @@ export const siteConfig = {
   tagline: 'Your First Commit Starts Here.',
   description:
     'A beginner-focused hackathon built for the next generation of developers. Learn, build, experiment, and ship something you\'re proud of.',
-  registerUrl: '#register',
+  registerUrl: 'https://firstcommit.devpost.com',
   meta: {
     title: 'FirstCommit — Beginner-Focused Coding Hackathon',
     description:

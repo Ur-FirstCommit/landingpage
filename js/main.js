@@ -5,6 +5,7 @@ import {
   howItWorks,
   prizes,
   prizeNote,
+  siteConfig,
   socialLinks,
   sponsors,
   timeline,
@@ -37,6 +38,8 @@ const whyEmojis = {
   showcase: '✨',
 };
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ==========================================================================
    Render Functions
    ========================================================================== */
@@ -47,8 +50,8 @@ function renderAbout() {
 
   grid.innerHTML = aboutPoints
     .map(
-      (point) => `
-      <article class="about__card">
+      (point, index) => `
+      <article class="about__card reveal-item" style="--reveal-index: ${index}">
         <div class="about__icon" aria-hidden="true">${icons[point.icon] || ''}</div>
         <h3 class="about__card-title">${point.title}</h3>
         <p class="about__card-text">${point.text}</p>
@@ -64,8 +67,8 @@ function renderWhy() {
 
   grid.innerHTML = whyCards
     .map(
-      (card) => `
-      <article class="why__card">
+      (card, index) => `
+      <article class="why__card reveal-item" style="--reveal-index: ${index}">
         <div class="why__icon" aria-hidden="true">${whyEmojis[card.icon] || '⭐'}</div>
         <h3 class="why__card-title">${card.title}</h3>
         <p class="why__card-text">${card.text}</p>
@@ -81,8 +84,8 @@ function renderSteps() {
 
   list.innerHTML = howItWorks
     .map(
-      (step) => `
-      <li class="steps__item">
+      (step, index) => `
+      <li class="steps__item reveal-item" style="--reveal-index: ${index}">
         <span class="steps__number" aria-hidden="true">${step.step}</span>
         <div class="steps__content">
           <h3 class="steps__title">${step.title}</h3>
@@ -101,8 +104,8 @@ function renderPrizes() {
 
   grid.innerHTML = prizes
     .map(
-      (prize) => `
-      <article class="prize-card${prize.highlight ? ' prize-card--highlight' : ''}">
+      (prize, index) => `
+      <article class="prize-card${prize.highlight ? ' prize-card--highlight' : ''} reveal-item" style="--reveal-index: ${index}">
         ${prize.highlight ? '<span class="prize-card__badge">Top Award</span>' : ''}
         <h3 class="prize-card__name">${prize.name}</h3>
         <p class="prize-card__description">${prize.description}</p>
@@ -141,8 +144,8 @@ function renderTimeline() {
 
   list.innerHTML = timeline
     .map(
-      (item) => `
-      <article class="timeline__item">
+      (item, index) => `
+      <article class="timeline__item reveal-item" style="--reveal-index: ${index}">
         <span class="timeline__marker" aria-hidden="true"></span>
         <time class="timeline__date" datetime="">${item.date}</time>
         <h3 class="timeline__title">${item.title}</h3>
@@ -160,7 +163,7 @@ function renderFAQ() {
   list.innerHTML = faqItems
     .map(
       (item, index) => `
-      <details class="faq__item" role="listitem"${index === 0 ? ' open' : ''}>
+      <details class="faq__item reveal-item" role="listitem" style="--reveal-index: ${index}"${index === 0 ? ' open' : ''}>
         <summary class="faq__question">
           ${item.question}
           <span class="faq__icon" aria-hidden="true">${icons.chevron}</span>
@@ -200,15 +203,80 @@ function renderFooter() {
 }
 
 /* ==========================================================================
+   Register Links
+   ========================================================================== */
+
+function initRegisterLinks() {
+  document.querySelectorAll('.register-link').forEach((link) => {
+    link.href = siteConfig.registerUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
+}
+
+/* ==========================================================================
+   Scroll Reveal
+   ========================================================================== */
+
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+
+  if (prefersReducedMotion) {
+    revealElements.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px',
+    }
+  );
+
+  revealElements.forEach((el) => observer.observe(el));
+}
+
+/* ==========================================================================
+   Header Scroll
+   ========================================================================== */
+
+function initHeaderScroll() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/* ==========================================================================
    Navigation
    ========================================================================== */
 
 function initNavigation() {
   const toggle = document.querySelector('.nav__toggle');
   const menu = document.querySelector('.nav__menu');
-  const links = document.querySelectorAll('.nav__link, .nav__cta, .footer__links a');
+  const internalLinks = document.querySelectorAll('.nav__link, .footer__links a:not(.register-link)');
 
   if (!toggle || !menu) return;
+
+  const closeMenu = () => {
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open menu');
+    menu.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
 
   toggle.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
@@ -218,21 +286,17 @@ function initNavigation() {
     document.body.style.overflow = isOpen ? '' : 'hidden';
   });
 
-  links.forEach((link) => {
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
-      menu.classList.remove('is-open');
-      document.body.style.overflow = '';
-    });
+  internalLinks.forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.querySelectorAll('.register-link').forEach((link) => {
+    link.addEventListener('click', closeMenu);
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.classList.contains('is-open')) {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
-      menu.classList.remove('is-open');
-      document.body.style.overflow = '';
+      closeMenu();
       toggle.focus();
     }
   });
@@ -251,7 +315,14 @@ function init() {
   renderTimeline();
   renderFAQ();
   renderFooter();
+  initRegisterLinks();
+  initScrollReveal();
+  initHeaderScroll();
   initNavigation();
+
+  if (!prefersReducedMotion) {
+    document.body.classList.add('is-loaded');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);

@@ -48,7 +48,7 @@
           <li><a href="#timeline" class="nav__link">Timeline</a></li>
           <li><a href="#faq" class="nav__link">FAQ</a></li>
         </ul>
-        <a href="#register" class="btn btn--primary nav__cta">Register</a>
+        <a href="https://firstcommit.devpost.com" class="btn btn--primary nav__cta register-link" target="_blank" rel="noopener noreferrer">Register</a>
       </div>
     </nav>
   </header>
@@ -58,22 +58,22 @@
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container hero__grid">
         <div class="hero__content">
-          <p class="hero__badge">
+          <p class="hero__badge hero__enter">
             <span class="hero__badge-dot" aria-hidden="true"></span>
             Hackathon for ages 13–21
           </p>
-          <h1 id="hero-heading" class="hero__title">Your First Commit Starts Here.</h1>
-          <p class="hero__subtitle">
+          <h1 id="hero-heading" class="hero__title hero__enter">Your First Commit Starts Here.</h1>
+          <p class="hero__subtitle hero__enter">
             A beginner-focused hackathon built for the next generation of developers.
             Learn, build, experiment, and ship something you're proud of.
           </p>
-          <div class="hero__actions">
-            <a href="#register" class="btn btn--primary btn--lg">Register Now</a>
+          <div class="hero__actions hero__enter">
+            <a href="https://firstcommit.devpost.com" class="btn btn--primary btn--lg register-link" target="_blank" rel="noopener noreferrer">Register Now</a>
             <a href="#prizes" class="btn btn--secondary btn--lg">Explore Prizes</a>
           </div>
         </div>
 
-        <div class="hero__visual" aria-hidden="true">
+        <div class="hero__visual hero__enter hero__enter--visual" aria-hidden="true">
           <div class="terminal">
             <div class="terminal__header">
               <span class="terminal__dot terminal__dot--red"></span>
@@ -100,7 +100,7 @@
     <!-- About -->
     <section class="section about" id="about" aria-labelledby="about-heading">
       <div class="container">
-        <div class="section__header">
+        <div class="section__header reveal">
           <span class="section__label">About</span>
           <h2 id="about-heading" class="section__title">Built for Beginners, Designed for Growth</h2>
           <p class="section__subtitle">
@@ -108,42 +108,42 @@
             We created a hackathon where your progress, curiosity, and effort are celebrated.
           </p>
         </div>
-        <div class="about__grid" id="about-grid"></div>
+        <div class="about__grid reveal-stagger" id="about-grid"></div>
       </div>
     </section>
 
     <!-- Why FirstCommit -->
     <section class="section why" aria-labelledby="why-heading">
       <div class="container">
-        <div class="section__header section__header--center">
+        <div class="section__header section__header--center reveal">
           <span class="section__label">Why FirstCommit?</span>
           <h2 id="why-heading" class="section__title">More Than a Competition</h2>
           <p class="section__subtitle">
             A hackathon experience focused on learning, community, and shipping real projects.
           </p>
         </div>
-        <div class="why__grid" id="why-grid"></div>
+        <div class="why__grid reveal-stagger" id="why-grid"></div>
       </div>
     </section>
 
     <!-- How It Works -->
     <section class="section steps" aria-labelledby="steps-heading">
       <div class="container">
-        <div class="section__header">
+        <div class="section__header reveal">
           <span class="section__label">How It Works</span>
           <h2 id="steps-heading" class="section__title">From Idea to Showcase</h2>
           <p class="section__subtitle">
             Six steps from registration to presenting your work. Simple, clear, and beginner-friendly.
           </p>
         </div>
-        <ol class="steps__list" id="steps-list"></ol>
+        <ol class="steps__list reveal-stagger" id="steps-list"></ol>
       </div>
     </section>
 
     <!-- Prizes -->
     <section class="section prizes" id="prizes" aria-labelledby="prizes-heading">
       <div class="container">
-        <div class="section__header section__header--center">
+        <div class="section__header section__header--center reveal">
           <span class="section__label">Prizes</span>
           <h2 id="prizes-heading" class="section__title">Awards That Celebrate Every Kind of Builder</h2>
           <p class="section__subtitle">
@@ -151,65 +151,65 @@
             technical skill, design, ambition, and growth.
           </p>
         </div>
-        <div class="prizes__grid" id="prizes-grid"></div>
-        <p class="prizes__note" id="prizes-note"></p>
+        <div class="prizes__grid reveal-stagger" id="prizes-grid"></div>
+        <p class="prizes__note reveal" id="prizes-note"></p>
       </div>
     </section>
 
     <!-- Sponsors -->
     <section class="section sponsors" id="sponsors" aria-labelledby="sponsors-heading">
       <div class="container">
-        <div class="section__header section__header--center">
+        <div class="section__header section__header--center reveal">
           <span class="section__label">Sponsors</span>
           <h2 id="sponsors-heading" class="section__title">Powered By</h2>
           <p class="section__subtitle">
             We're grateful to the partners who help make FirstCommit possible.
           </p>
         </div>
-        <div class="sponsors__grid" id="sponsors-grid"></div>
+        <div class="sponsors__grid reveal" id="sponsors-grid"></div>
       </div>
     </section>
 
     <!-- Timeline -->
     <section class="section timeline-section" id="timeline" aria-labelledby="timeline-heading">
       <div class="container">
-        <div class="section__header">
+        <div class="section__header reveal">
           <span class="section__label">Timeline</span>
           <h2 id="timeline-heading" class="section__title">Key Dates</h2>
           <p class="section__subtitle">
             Dates below are placeholders and will be updated once confirmed.
           </p>
         </div>
-        <div class="timeline" id="timeline-list"></div>
+        <div class="timeline reveal-stagger" id="timeline-list"></div>
       </div>
     </section>
 
     <!-- FAQ -->
     <section class="section faq" id="faq" aria-labelledby="faq-heading">
       <div class="container container--narrow">
-        <div class="section__header section__header--center">
+        <div class="section__header section__header--center reveal">
           <span class="section__label">FAQ</span>
           <h2 id="faq-heading" class="section__title">Common Questions</h2>
           <p class="section__subtitle">
             Everything you need to know before registering.
           </p>
         </div>
-        <div class="faq__list" id="faq-list" role="list"></div>
+        <div class="faq__list reveal-stagger" id="faq-list" role="list"></div>
       </div>
     </section>
 
     <!-- Final CTA -->
     <section class="section cta" id="register" aria-labelledby="cta-heading">
       <div class="container">
-        <div class="cta__card">
+        <div class="cta__card reveal">
           <div class="cta__content">
             <h2 id="cta-heading" class="cta__title">Ready to Make Your First Commit?</h2>
             <p class="cta__text">
               Join hundreds of young developers learning by building. Registration is free —
               all you need is curiosity and the drive to create.
             </p>
-            <a href="#register" class="btn btn--primary btn--lg cta__btn">Register Now</a>
-            <p class="cta__fine-print">Registration details coming soon. Sign up to be notified.</p>
+            <a href="https://firstcommit.devpost.com" class="btn btn--primary btn--lg cta__btn register-link" target="_blank" rel="noopener noreferrer">Register Now</a>
+            <p class="cta__fine-print">Register on Devpost — it only takes a minute.</p>
           </div>
           <div class="cta__decoration" aria-hidden="true">
             <span class="cta__code">&lt;FirstCommit /&gt;</span>
@@ -237,7 +237,7 @@
           <li><a href="#prizes">Prizes</a></li>
           <li><a href="#timeline">Timeline</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="#register">Register</a></li>
+          <li><a href="https://firstcommit.devpost.com" class="register-link" target="_blank" rel="noopener noreferrer">Register</a></li>
         </ul>
       </nav>
 
