@@ -273,7 +273,7 @@ export const faqItems = [
 ];
 
 export const socialLinks = [
-  { label: 'Instagram', href: 'https://www.instagram.com/ur.firstcommit', icon: 'twitter' },
+  { label: 'Instagram', href: 'https://www.instagram.com/ur.firstcommit', icon: 'instagram' },
   { label: 'Discord', href: 'https://discord.gg/ySq8pZ85XY', icon: 'discord' },
   { label: 'GitHub', href: 'https://github.com/Ur-FirstCommit', icon: 'github' },
   { label: 'Email', href: 'mailto:urfirstcommit@gmail.com', icon: 'email' },
