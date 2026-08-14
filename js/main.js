@@ -267,36 +267,48 @@ function initHeaderScroll() {
 function initNavigation() {
   const toggle = document.querySelector('.nav__toggle');
   const menu = document.querySelector('.nav__menu');
-  const internalLinks = document.querySelectorAll('.nav__link, .footer__links a:not(.register-link)');
+  const nav = document.querySelector('.nav');
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
 
   if (!toggle || !menu) return;
 
-  const closeMenu = () => {
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu');
-    menu.classList.remove('is-open');
-    document.body.style.overflow = '';
+  const setMenuState = (isOpen) => {
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('is-open', isOpen);
+    menu.setAttribute('aria-hidden', String(!isOpen && mobileQuery.matches));
+    document.documentElement.classList.toggle('menu-open', isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
   };
 
   toggle.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
-    menu.classList.toggle('is-open');
-    document.body.style.overflow = isOpen ? '' : 'hidden';
+    setMenuState(!isOpen);
   });
 
-  internalLinks.forEach((link) => {
-    link.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenuState(false));
   });
 
-  document.querySelectorAll('.register-link').forEach((link) => {
-    link.addEventListener('click', closeMenu);
+  nav?.querySelector('.nav__logo')?.addEventListener('click', () => {
+    setMenuState(false);
   });
+
+  const syncNavigation = () => {
+    if (!mobileQuery.matches) {
+      setMenuState(false);
+      menu.setAttribute('aria-hidden', 'false');
+    } else {
+      menu.setAttribute('aria-hidden', String(toggle.getAttribute('aria-expanded') !== 'true'));
+    }
+  };
+
+  mobileQuery.addEventListener('change', syncNavigation);
+  syncNavigation();
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menu.classList.contains('is-open')) {
-      closeMenu();
+      setMenuState(false);
       toggle.focus();
     }
   });
