@@ -178,6 +178,12 @@ export const sponsors = [
     logo: '/assets/sponsors/xyz-logo.svg',
     url: 'https://gen.xyz',
   },
+  {
+    name: 'DevSwarm',
+    description: 'Giving each participant and winner 1 month, and 1 year respectively of their pro subscription.',
+    logo: 'assets/sponsors/devswarm-logo.png',
+    url: 'https://devswarm.ai',
+  },
 ];
 
 export const timeline = [
