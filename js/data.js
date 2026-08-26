@@ -14,7 +14,7 @@ export const siteConfig = {
     description:
       'FirstCommit is a beginner-focused hackathon for ages 13–21. Learn by building, ship your first project, and showcase what you accomplished.',
     ogImage: '/assets/og-image.png',
-    url: 'https://firstcommit.dev',
+    url: 'https://firstcommit.xyz',
   },
 };
 
@@ -274,9 +274,9 @@ export const faqItems = [
 
 export const socialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/ur.firstcommit', icon: 'instagram' },
-  { label: 'Discord', href: 'https://discord.gg/ySq8pZ85XY', icon: 'discord' },
+  { label: 'Discord', href: 'https://discord.firstcommit.xyz/', icon: 'discord' },
   { label: 'GitHub', href: 'https://github.com/Ur-FirstCommit', icon: 'github' },
-  { label: 'Email', href: 'mailto:urfirstcommit@gmail.com', icon: 'email' },
+  { label: 'Email', href: 'mailto:support@firstcommit.xyz', icon: 'email' },
 ];
 
 export const footerDescription =
