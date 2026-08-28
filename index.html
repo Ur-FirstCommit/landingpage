@@ -47,7 +47,7 @@
           <li><a href="#prizes" class="nav__link">Prizes</a></li>
           <li><a href="#timeline" class="nav__link">Timeline</a></li>
           <li><a href="#faq" class="nav__link">FAQ</a></li>
-          <li><a href="https://hcb.hackclub.com/donations/start/firstcommit" class="nav__link" target="_blank">Donate</a></li>
+          <li><a href="https://forms.fillout.com/t/2jyDZzQbJuus" class="nav__link donate-link" target="_blank" rel="noopener noreferrer">Donate</a></li>
         </ul>
         <a href="https://paradise.firstcommit.xyz/" class="btn btn--primary nav__cta register-link" target="_blank" rel="noopener noreferrer">Register</a>
       </div>
@@ -238,7 +238,7 @@
           <li><a href="#prizes">Prizes</a></li>
           <li><a href="#timeline">Timeline</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="">Donate</a></li>
+          <li><a href="https://forms.fillout.com/t/2jyDZzQbJuus" class="donate-link" target="_blank" rel="noopener noreferrer">Donate</a></li>
           <li><a href="https://firstcommit.devpost.com" class="register-link" target="_blank" rel="noopener noreferrer">Register</a></li>
         </ul>
       </nav>
@@ -254,6 +254,17 @@
       <p class="footer__sponsor">Domain sponsor: <a href="https://gen.xyz" target="_blank" rel="noopener noreferrer">.xyz</a></p>
     </div>
   </footer>
+
+  <div class="donate-modal" id="donate-modal" aria-hidden="true">
+    <div class="donate-modal__overlay" data-donate-close></div>
+    <div class="donate-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="donate-modal-title">
+      <div class="donate-modal__header">
+        <h2 class="donate-modal__title" id="donate-modal-title">Donate</h2>
+        <button class="donate-modal__close" type="button" aria-label="Close donation form" data-donate-close>&times;</button>
+      </div>
+      <div class="donate-modal__body" id="donate-modal-body"></div>
+    </div>
+  </div>
 
   <script type="module" src="/js/main.js?v=mobile-nav-1"></script>
 </body>

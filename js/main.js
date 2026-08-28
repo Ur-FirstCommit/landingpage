@@ -215,6 +215,72 @@ function initRegisterLinks() {
 }
 
 /* ==========================================================================
+   Donate Popup
+   ========================================================================== */
+
+function initDonatePopup() {
+  const modal = document.getElementById('donate-modal');
+  const modalBody = document.getElementById('donate-modal-body');
+  const donateLinks = document.querySelectorAll('.donate-link');
+  const closeButtons = document.querySelectorAll('[data-donate-close]');
+  const filloutBaseUrl = 'https://forms.fillout.com/t/2jyDZzQbJuus';
+  let previousFocus = null;
+
+  if (!modal || !modalBody || donateLinks.length === 0) return;
+
+  const getFilloutUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.toString();
+    return query ? `${filloutBaseUrl}?${query}` : filloutBaseUrl;
+  };
+
+  const openModal = () => {
+    previousFocus = document.activeElement;
+
+    if (!modalBody.querySelector('iframe')) {
+      const iframe = document.createElement('iframe');
+      iframe.src = getFilloutUrl();
+      iframe.title = 'FirstCommit donation form';
+      iframe.loading = 'lazy';
+      iframe.allowFullscreen = true;
+      modalBody.appendChild(iframe);
+    }
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    modal.querySelector('.donate-modal__close')?.focus();
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+
+    if (previousFocus instanceof HTMLElement) {
+      previousFocus.focus();
+    }
+  };
+
+  donateLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+}
+
+/* ==========================================================================
    Scroll Reveal
    ========================================================================== */
 
@@ -328,6 +394,7 @@ function init() {
   renderFAQ();
   renderFooter();
   initRegisterLinks();
+  initDonatePopup();
   initScrollReveal();
   initHeaderScroll();
   initNavigation();
