@@ -184,6 +184,12 @@ export const sponsors = [
     logo: 'assets/sponsors/devswarm-logo.png',
     url: 'https://devswarm.ai',
   },
+  {
+    name: 'Linear',
+    description: 'Giving winner 6 months free of Linear pro subscription.',
+    logo: 'assets/sponsors/linearlogo.png',
+    url: 'https://linear.app/'
+  },
 ];
 
 export const timeline = [
