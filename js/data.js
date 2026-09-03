@@ -186,7 +186,7 @@ export const sponsors = [
   },
   {
     name: 'Linear',
-    description: 'Giving winner 6 months free of Linear pro subscription.',
+    description: 'Giving participants 6 months free of Linear pro subscription.',
     logo: 'assets/sponsors/linearlogo.png',
     url: 'https://linear.app/'
   },
